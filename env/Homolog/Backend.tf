@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-state-alura"
-    key    = "Prod/terraform.tfstate"
+    bucket = "tfstate-jhonny-monteiro"
+    key    = "Homolog/terraform.tfstate"
     region = "us-west-2"
   }
 }
