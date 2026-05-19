@@ -56,7 +56,7 @@ resource "aws_ecs_task_definition" "Go-API" {
             "value" = tostring(aws_db_instance.default.port)
           },
           {
-            "name"  = "DB_USER"
+            "name"  = "USER"
             "value" = tostring(aws_db_instance.default.username)
           },
           {
