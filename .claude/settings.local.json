@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Read(//d/my_projects/integrations-with-ec2/**)"
+      "Read(//d/my_projects/integrations-with-ec2/**)",
+      "Bash(git -C d:/my_projects/Infra_CI status)",
+      "Bash(git -C d:/my_projects/Infra_CI log --oneline -10)"
     ]
   }
 }

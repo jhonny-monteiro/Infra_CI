@@ -12,6 +12,11 @@ module "ecs" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "go_api" {
+  name              = "/ecs/${var.ambiante}/Go-API"
+  retention_in_days = 7
+}
+
 resource "aws_ecs_task_definition" "Go-API" {
   family                   = "Go-API"
   requires_compatibilities = ["FARGATE"]
@@ -33,6 +38,14 @@ resource "aws_ecs_task_definition" "Go-API" {
             "hostPort"      = 8000
           }
         ]
+        "logConfiguration" = {
+          "logDriver" = "awslogs"
+          "options" = {
+            "awslogs-group"         = aws_cloudwatch_log_group.go_api.name
+            "awslogs-region"        = "us-west-2"
+            "awslogs-stream-prefix" = "ecs"
+          }
+        }
         "environment"= [
           {
             "name"  = "HOST"
